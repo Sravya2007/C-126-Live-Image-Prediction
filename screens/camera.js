@@ -52,8 +52,24 @@ export default class PickImage extends React.Component{
             name: filename,
             type: type
         };
+
         data.append("digit", fileToUpload);
-        fetch("https://f292a3137990.ngrok.io/predict-digit", { method: "POST", body: data, headers: { "content-type": "multipart/form-data", }, }) .then((response) => response.json()) .then((result) => { console.log("Success:", result); }) .catch((error) => { console.error("Error:", error); }); };
+
+        fetch("http://07f2c0d761a4.ngrok.io/predict-digit",
+        { method: "POST",
+        body: data,
+        headers: { "content-type": "multipart/form-data" }})
+
+        .then((response) => response.json())
+
+        .then((result) => {
+            console.log("Success:", result);
+        })
+
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+    }
 
     render() {
         let { Image } = this.state
